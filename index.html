@@ -333,104 +333,32 @@
         <div class="container">
             <h2 class="section-title">
                 <span class="title-number">04.</span>
-                Featured Projects
+                GitHub Repositories
             </h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="View Code">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="project-link" title="Live Demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Project One</h3>
-                        <p class="project-description">
-                            A full-stack web application built with React and Node.js. 
-                            Features user authentication, real-time updates, and responsive design.
-                        </p>
-                        <div class="project-tech">
-                            <span>React</span>
-                            <span>Node.js</span>
-                            <span>MongoDB</span>
-                            <span>Socket.io</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="View Code">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="project-link" title="Live Demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Project Two</h3>
-                        <p class="project-description">
-                            A mobile-first e-commerce platform with payment integration, 
-                            inventory management, and analytics dashboard.
-                        </p>
-                        <div class="project-tech">
-                            <span>Vue.js</span>
-                            <span>Python</span>
-                            <span>PostgreSQL</span>
-                            <span>Stripe</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="View Code">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="project-link" title="Live Demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Project Three</h3>
-                        <p class="project-description">
-                            An AI-powered chatbot using natural language processing 
-                            to provide intelligent customer support automation.
-                        </p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>TensorFlow</span>
-                            <span>FastAPI</span>
-                            <span>Docker</span>
-                        </div>
-                    </div>
-                </div>
+            
+            <!-- Filter Buttons -->
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="PHP">PHP</button>
+                <button class="filter-btn" data-filter="JavaScript">JavaScript</button>
+                <button class="filter-btn" data-filter="HTML">HTML</button>
             </div>
+            
+            <!-- Loading State -->
+            <div class="projects-loading" id="projectsLoading">
+                <div class="loading-spinner"></div>
+                <p>Loading repositories from GitHub...</p>
+            </div>
+            
+            <!-- Projects Grid - Will be populated by JavaScript -->
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Repos will be inserted here dynamically -->
+            </div>
+            
             <div class="projects-cta">
-                <a href="https://github.com/fariqul" target="_blank" class="btn btn-primary">
+                <a href="https://github.com/fariqul?tab=repositories" target="_blank" class="btn btn-primary">
                     <i class="fab fa-github"></i>
-                    <span>View All Projects on GitHub</span>
+                    <span>View All Repositories on GitHub</span>
                 </a>
             </div>
         </div>

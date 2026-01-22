@@ -34,6 +34,7 @@ function typeEffect() {
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(typeEffect, 1000);
     fetchGitHubStats(); // Fetch GitHub stats on load
+    fetchGitHubRepos(); // Fetch GitHub repos on load
 });
 
 // ===== Mobile Navigation =====
@@ -324,6 +325,165 @@ function animateNumbers() {
                 stat.textContent = currentValue;
             }
         }, duration);
+    });
+}
+
+// ===== GitHub Repositories =====
+let allRepos = [];
+
+async function fetchGitHubRepos() {
+    const username = 'fariqul';
+    const projectsGrid = document.getElementById('projectsGrid');
+    const loadingEl = document.getElementById('projectsLoading');
+    
+    try {
+        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+        const repos = await response.json();
+        
+        // Filter out forks and store all repos
+        allRepos = repos.filter(repo => !repo.fork);
+        
+        // Sort by stars, then by updated date
+        allRepos.sort((a, b) => {
+            if (b.stargazers_count !== a.stargazers_count) {
+                return b.stargazers_count - a.stargazers_count;
+            }
+            return new Date(b.updated_at) - new Date(a.updated_at);
+        });
+        
+        // Hide loading, show repos
+        loadingEl.classList.add('hidden');
+        displayRepos(allRepos);
+        
+        // Setup filter buttons
+        setupFilters();
+        
+    } catch (error) {
+        console.error('Error fetching repos:', error);
+        loadingEl.innerHTML = `
+            <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: var(--accent-blue); margin-bottom: 1rem;"></i>
+            <p>Failed to load repositories. Please try again later.</p>
+        `;
+    }
+}
+
+function displayRepos(repos) {
+    const projectsGrid = document.getElementById('projectsGrid');
+    
+    if (repos.length === 0) {
+        projectsGrid.innerHTML = `
+            <div class="no-projects">
+                <i class="fas fa-folder-open"></i>
+                <p>No repositories found</p>
+            </div>
+        `;
+        return;
+    }
+    
+    // Display top 6 repos
+    const displayRepos = repos.slice(0, 6);
+    
+    projectsGrid.innerHTML = displayRepos.map(repo => createRepoCard(repo)).join('');
+    
+    // Add reveal animation
+    const cards = projectsGrid.querySelectorAll('.project-card');
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        setTimeout(() => {
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+}
+
+function createRepoCard(repo) {
+    const language = repo.language || 'Unknown';
+    const languageClass = language.toLowerCase().replace(/[^a-z]/g, '');
+    const description = repo.description || 'No description available';
+    const stars = repo.stargazers_count;
+    const forks = repo.forks_count;
+    const updatedAt = new Date(repo.updated_at).toLocaleDateString('en-US', { 
+        month: 'short', 
+        day: 'numeric', 
+        year: 'numeric' 
+    });
+    
+    // Get language icon
+    const languageIcons = {
+        'PHP': 'fab fa-php',
+        'JavaScript': 'fab fa-js',
+        'HTML': 'fab fa-html5',
+        'CSS': 'fab fa-css3-alt',
+        'Python': 'fab fa-python',
+        'TypeScript': 'fas fa-code',
+        'Blade': 'fab fa-laravel',
+        'Vue': 'fab fa-vuejs'
+    };
+    
+    const iconClass = languageIcons[language] || 'fas fa-code';
+    
+    return `
+        <div class="project-card" data-language="${language}">
+            <div class="project-image">
+                <div class="project-overlay">
+                    <div class="project-links">
+                        <a href="${repo.html_url}" target="_blank" class="project-link" title="View Repository">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        ${repo.homepage ? `
+                            <a href="${repo.homepage}" target="_blank" class="project-link" title="Live Demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        ` : ''}
+                    </div>
+                </div>
+                <div class="project-placeholder">
+                    <i class="${iconClass} language-icon ${languageClass}"></i>
+                </div>
+            </div>
+            <div class="project-info">
+                <h3 class="project-title">
+                    <i class="fas fa-folder"></i>
+                    ${repo.name}
+                </h3>
+                <p class="project-description">${description}</p>
+                <div class="project-meta">
+                    <span class="stars"><i class="fas fa-star"></i> ${stars}</span>
+                    <span class="forks"><i class="fas fa-code-branch"></i> ${forks}</span>
+                    <span><i class="fas fa-clock"></i> ${updatedAt}</span>
+                </div>
+                <div class="project-tech">
+                    <span class="language">${language}</span>
+                    ${repo.topics && repo.topics.length > 0 ? 
+                        repo.topics.slice(0, 3).map(topic => `<span>${topic}</span>`).join('') 
+                        : ''
+                    }
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function setupFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Update active state
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const filter = btn.dataset.filter;
+            
+            if (filter === 'all') {
+                displayRepos(allRepos);
+            } else {
+                const filteredRepos = allRepos.filter(repo => repo.language === filter);
+                displayRepos(filteredRepos);
+            }
+        });
     });
 }
 
