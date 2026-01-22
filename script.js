@@ -179,7 +179,7 @@ document.head.appendChild(activeStyle);
 // ===== Form Submission =====
 const contactForm = document.querySelector('.contact-form');
 
-contactForm.addEventListener('submit', (e) => {
+contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     // Get form values
@@ -193,10 +193,40 @@ contactForm.addEventListener('submit', (e) => {
         return;
     }
     
-    // Here you would typically send the form data to a server
-    // For demo purposes, we'll just show a success message
-    showNotification('Message sent successfully!', 'success');
-    contactForm.reset();
+    // Get submit button and show loading
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
+    
+    try {
+        // Send form data to Formspree
+        const response = await fetch('https://formspree.io/f/xpqpadwg', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                message: message
+            })
+        });
+        
+        if (response.ok) {
+            showNotification('Message sent successfully! I will reply soon.', 'success');
+            contactForm.reset();
+        } else {
+            throw new Error('Failed to send message');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showNotification('Failed to send message. Please try again or email me directly.', 'error');
+    } finally {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    }
 });
 
 // ===== Notification System =====

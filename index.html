@@ -455,17 +455,18 @@
                         </div>
                     </div>
                 </div>
-                <form class="contact-form">
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/xpqpadwg" method="POST">
+                    <input type="hidden" name="_subject" value="Pesan Baru dari Portfolio Website">
                     <div class="form-group">
-                        <input type="text" id="name" placeholder=" " required>
+                        <input type="text" id="name" name="name" placeholder=" " required>
                         <label for="name">Your Name</label>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" placeholder=" " required>
+                        <input type="email" id="email" name="email" placeholder=" " required>
                         <label for="email">Your Email</label>
                     </div>
                     <div class="form-group">
-                        <textarea id="message" rows="5" placeholder=" " required></textarea>
+                        <textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
                         <label for="message">Your Message</label>
                     </div>
                     <button type="submit" class="btn btn-primary">
