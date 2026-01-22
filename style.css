@@ -616,6 +616,20 @@ section {
     position: relative;
 }
 
+.profile-photo {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: var(--transition-normal);
+}
+
+.image-wrapper:hover .profile-photo {
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+}
+
 .image-placeholder {
     width: 280px;
     height: 280px;
