@@ -270,4 +270,4 @@ document.addEventListener('mousemove', (e) => {
 // ===== Console Easter Egg =====
 console.log('%c👋 Hello, fellow developer!', 'font-size: 24px; font-weight: bold; color: #00d4ff;');
 console.log('%cInterested in the code? Check out my GitHub!', 'font-size: 14px; color: #a0a0b0;');
-console.log('%chttps://github.com/yourusername', 'font-size: 14px; color: #7b2cbf;');
+console.log('%chttps://github.com/fariqul', 'font-size: 14px; color: #7b2cbf;');
