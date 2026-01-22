@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Developer</title>
+    <title>Ilham Fariqul | Laravel & React Developer</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -27,6 +27,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#github">GitHub</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -76,13 +77,13 @@
                     <a href="https://github.com/fariqul" target="_blank" class="social-link">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://linkedin.com/in/fariqul" target="_blank" class="social-link">
+                    <a href="https://www.linkedin.com/in/moh-ilham-fariqul-zaman-87938128a" target="_blank" class="social-link">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                     <a href="https://twitter.com/fariqul" target="_blank" class="social-link">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="mailto:your@email.com" class="social-link">
+                    <a href="mailto:zamanilham57@gmail.com" class="social-link">
                         <i class="fas fa-envelope"></i>
                     </a>
                 </div>
@@ -100,16 +101,16 @@
                     <div class="window-content">
                         <pre><code><span class="keyword">const</span> <span class="variable">developer</span> = {
     <span class="property">name</span>: <span class="string">"Ilham Fariqul"</span>,
-    <span class="property">title</span>: <span class="string">"Full Stack Developer"</span>,
-    <span class="property">skills</span>: [<span class="string">"JavaScript"</span>, <span class="string">"Python"</span>, <span class="string">"React"</span>],
-    <span class="property">passion</span>: <span class="string">"Building amazing things"</span>,
+    <span class="property">title</span>: <span class="string">"Laravel & React Developer"</span>,
+    <span class="property">stack</span>: {
+        <span class="property">backend</span>: [<span class="string">"Laravel"</span>, <span class="string">"PHP"</span>, <span class="string">"MySQL"</span>],
+        <span class="property">frontend</span>: [<span class="string">"React"</span>, <span class="string">"Tailwind"</span>]
+    },
     
-    <span class="function">sayHello</span>() {
-        <span class="keyword">return</span> <span class="string">`Welcome to my portfolio!`</span>;
+    <span class="function">buildApp</span>() {
+        <span class="keyword">return</span> <span class="string">`Let's create something amazing!`</span>;
     }
-};
-
-<span class="variable">developer</span>.<span class="function">sayHello</span>();</code></pre>
+};</code></pre>
                     </div>
                 </div>
             </div>
@@ -132,40 +133,87 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        Hello! I'm a passionate developer who loves creating things that live on the internet. 
-                        My interest in programming started back when I first discovered how to build websites — 
-                        and I've been hooked ever since!
+                        Hello! I'm a passionate <strong>Laravel & React Developer</strong> who loves building 
+                        scalable web applications. My journey started with PHP and has evolved into mastering 
+                        the full-stack development with Laravel as my backend powerhouse and React for dynamic frontends.
                     </p>
                     <p>
-                        Fast-forward to today, I've had the privilege of working on various projects ranging 
-                        from web applications to mobile apps. My main focus these days is building accessible, 
-                        inclusive products and digital experiences.
+                        I specialize in building RESTful APIs with Laravel, implementing authentication systems, 
+                        and creating responsive user interfaces with React and Tailwind CSS. I believe in writing 
+                        clean, maintainable code and following best practices.
                     </p>
                     <p>
-                        When I'm not coding, you can find me exploring new technologies, contributing to 
-                        open-source projects, or sharing knowledge with the developer community.
+                        Currently exploring the TALL stack (Tailwind, Alpine.js, Laravel, Livewire) and 
+                        always excited to learn new technologies that can improve my development workflow.
                     </p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-number">2+</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">20+</span>
-                            <span class="stat-label">Projects Completed</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">500+</span>
-                            <span class="stat-label">GitHub Commits</span>
-                        </div>
+                    <div class="tech-badges">
+                        <span class="tech-badge laravel"><i class="fab fa-laravel"></i> Laravel</span>
+                        <span class="tech-badge react"><i class="fab fa-react"></i> React</span>
+                        <span class="tech-badge php"><i class="fab fa-php"></i> PHP</span>
+                        <span class="tech-badge js"><i class="fab fa-js"></i> JavaScript</span>
                     </div>
                 </div>
                 <div class="about-image">
                     <div class="image-wrapper">
                         <div class="image-placeholder">
-                            <i class="fas fa-user-astronaut"></i>
+                            <i class="fas fa-laptop-code"></i>
                         </div>
                         <div class="image-border"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Stats Section -->
+    <section id="github" class="github-stats">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-number">02.</span>
+                GitHub Activity
+            </h2>
+            <div class="github-content">
+                <div class="github-cards">
+                    <!-- GitHub Stats Card -->
+                    <div class="github-card">
+                        <img src="https://github-readme-stats.vercel.app/api?username=fariqul&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0a0a0f&title_color=00d4ff&icon_color=7b2cbf&text_color=a0a0b0" alt="GitHub Stats" loading="lazy">
+                    </div>
+                    <!-- GitHub Streak -->
+                    <div class="github-card">
+                        <img src="https://github-readme-streak-stats.herokuapp.com/?user=fariqul&theme=tokyonight&hide_border=true&background=0a0a0f&ring=00d4ff&fire=e040fb&currStreakLabel=00d4ff" alt="GitHub Streak" loading="lazy">
+                    </div>
+                </div>
+                <div class="github-cards">
+                    <!-- Top Languages -->
+                    <div class="github-card">
+                        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=fariqul&layout=compact&theme=tokyonight&hide_border=true&bg_color=0a0a0f&title_color=00d4ff&text_color=a0a0b0" alt="Top Languages" loading="lazy">
+                    </div>
+                    <!-- GitHub Activity Graph -->
+                    <div class="github-card wide">
+                        <img src="https://github-readme-activity-graph.vercel.app/graph?username=fariqul&theme=tokyo-night&hide_border=true&bg_color=0a0a0f&color=00d4ff&line=7b2cbf&point=e040fb" alt="Contribution Graph" loading="lazy">
+                    </div>
+                </div>
+                <!-- GitHub Profile Summary -->
+                <div class="github-profile-stats" id="githubStats">
+                    <div class="profile-stat">
+                        <i class="fas fa-code-branch"></i>
+                        <span class="stat-value" id="repoCount">--</span>
+                        <span class="stat-name">Public Repos</span>
+                    </div>
+                    <div class="profile-stat">
+                        <i class="fas fa-users"></i>
+                        <span class="stat-value" id="followers">--</span>
+                        <span class="stat-name">Followers</span>
+                    </div>
+                    <div class="profile-stat">
+                        <i class="fas fa-user-friends"></i>
+                        <span class="stat-value" id="following">--</span>
+                        <span class="stat-name">Following</span>
+                    </div>
+                    <div class="profile-stat">
+                        <i class="fas fa-star"></i>
+                        <span class="stat-value" id="totalStars">--</span>
+                        <span class="stat-name">Total Stars</span>
                     </div>
                 </div>
             </div>
@@ -176,55 +224,19 @@
     <section id="skills" class="skills">
         <div class="container">
             <h2 class="section-title">
-                <span class="title-number">02.</span>
+                <span class="title-number">03.</span>
                 Skills & Technologies
             </h2>
             <div class="skills-grid">
-                <div class="skill-category">
+                <div class="skill-category featured">
                     <h3 class="category-title">
-                        <i class="fas fa-code"></i>
-                        Frontend
+                        <i class="fab fa-laravel"></i>
+                        Laravel (Backend)
                     </h3>
                     <div class="skill-items">
                         <div class="skill-item">
-                            <i class="fab fa-html5"></i>
-                            <span>HTML5</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-css3-alt"></i>
-                            <span>CSS3</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-js"></i>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-react"></i>
-                            <span>React</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-vuejs"></i>
-                            <span>Vue.js</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-wind"></i>
-                            <span>Tailwind</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-server"></i>
-                        Backend
-                    </h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <i class="fab fa-node-js"></i>
-                            <span>Node.js</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-python"></i>
-                            <span>Python</span>
+                            <i class="fab fa-laravel"></i>
+                            <span>Laravel</span>
                         </div>
                         <div class="skill-item">
                             <i class="fab fa-php"></i>
@@ -235,19 +247,55 @@
                             <span>MySQL</span>
                         </div>
                         <div class="skill-item">
-                            <i class="fas fa-leaf"></i>
-                            <span>MongoDB</span>
+                            <i class="fas fa-key"></i>
+                            <span>REST API</span>
                         </div>
                         <div class="skill-item">
-                            <i class="fas fa-fire"></i>
-                            <span>Firebase</span>
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Sanctum</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-cubes"></i>
+                            <span>Eloquent ORM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category featured">
+                    <h3 class="category-title">
+                        <i class="fab fa-react"></i>
+                        React (Frontend)
+                    </h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-react"></i>
+                            <span>React.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-wind"></i>
+                            <span>Tailwind CSS</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-atom"></i>
+                            <span>Redux</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-route"></i>
+                            <span>React Router</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>Vite</span>
                         </div>
                     </div>
                 </div>
                 <div class="skill-category">
                     <h3 class="category-title">
                         <i class="fas fa-tools"></i>
-                        Tools & Others
+                        Tools & DevOps
                     </h3>
                     <div class="skill-items">
                         <div class="skill-item">
@@ -263,16 +311,16 @@
                             <span>Docker</span>
                         </div>
                         <div class="skill-item">
-                            <i class="fab fa-figma"></i>
-                            <span>Figma</span>
-                        </div>
-                        <div class="skill-item">
                             <i class="fas fa-terminal"></i>
-                            <span>Terminal</span>
+                            <span>Composer</span>
                         </div>
                         <div class="skill-item">
-                            <i class="fab fa-linux"></i>
-                            <span>Linux</span>
+                            <i class="fab fa-npm"></i>
+                            <span>NPM</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-code-branch"></i>
+                            <span>Postman</span>
                         </div>
                     </div>
                 </div>
@@ -284,7 +332,7 @@
     <section id="projects" class="projects">
         <div class="container">
             <h2 class="section-title">
-                <span class="title-number">03.</span>
+                <span class="title-number">04.</span>
                 Featured Projects
             </h2>
             <div class="projects-grid">
@@ -392,7 +440,7 @@
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">
-                <span class="title-number">04.</span>
+                <span class="title-number\">05.</span>
                 Get In Touch
             </h2>
             <div class="contact-content">
@@ -406,11 +454,11 @@
                     <div class="contact-info">
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>your@email.com</span>
+                            <span>zamanilham57@gmail.com</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Your Location, Country</span>
+                            <span>Makassar, Indonesia</span>
                         </div>
                     </div>
                 </div>

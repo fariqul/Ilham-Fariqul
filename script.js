@@ -1,6 +1,6 @@
 // ===== Typing Animation =====
 const dynamicText = document.querySelector('.dynamic-text');
-const words = ['Full Stack Developer', 'UI/UX Enthusiast', 'Open Source Contributor', 'Problem Solver', 'Tech Enthusiast'];
+const words = ['Laravel Developer', 'React Developer', 'Full Stack Developer', 'Backend Specialist', 'API Builder'];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -33,6 +33,7 @@ function typeEffect() {
 
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(typeEffect, 1000);
+    fetchGitHubStats(); // Fetch GitHub stats on load
 });
 
 // ===== Mobile Navigation =====
@@ -267,7 +268,67 @@ document.addEventListener('mousemove', (e) => {
     });
 });
 
+// ===== GitHub Stats API =====
+async function fetchGitHubStats() {
+    const username = 'fariqul';
+    
+    try {
+        // Fetch user data
+        const userResponse = await fetch(`https://api.github.com/users/${username}`);
+        const userData = await userResponse.json();
+        
+        // Update profile stats
+        document.getElementById('repoCount').textContent = userData.public_repos || 0;
+        document.getElementById('followers').textContent = userData.followers || 0;
+        document.getElementById('following').textContent = userData.following || 0;
+        
+        // Fetch repos to calculate total stars
+        const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
+        const reposData = await reposResponse.json();
+        
+        // Calculate total stars
+        const totalStars = reposData.reduce((acc, repo) => acc + repo.stargazers_count, 0);
+        document.getElementById('totalStars').textContent = totalStars;
+        
+        // Animate numbers
+        animateNumbers();
+        
+    } catch (error) {
+        console.error('Error fetching GitHub data:', error);
+        // Set fallback values
+        document.getElementById('repoCount').textContent = '5+';
+        document.getElementById('followers').textContent = '10+';
+        document.getElementById('following').textContent = '20+';
+        document.getElementById('totalStars').textContent = '⭐';
+    }
+}
+
+// Animate counting numbers
+function animateNumbers() {
+    const stats = document.querySelectorAll('.profile-stat .stat-value');
+    
+    stats.forEach(stat => {
+        const finalValue = parseInt(stat.textContent);
+        if (isNaN(finalValue)) return;
+        
+        let currentValue = 0;
+        const increment = Math.ceil(finalValue / 30);
+        const duration = 50;
+        
+        const counter = setInterval(() => {
+            currentValue += increment;
+            if (currentValue >= finalValue) {
+                stat.textContent = finalValue;
+                clearInterval(counter);
+            } else {
+                stat.textContent = currentValue;
+            }
+        }, duration);
+    });
+}
+
 // ===== Console Easter Egg =====
 console.log('%c👋 Hello, fellow developer!', 'font-size: 24px; font-weight: bold; color: #00d4ff;');
+console.log('%c🔥 Laravel + React = ❤️', 'font-size: 16px; color: #ff2d20;');
 console.log('%cInterested in the code? Check out my GitHub!', 'font-size: 14px; color: #a0a0b0;');
 console.log('%chttps://github.com/fariqul', 'font-size: 14px; color: #7b2cbf;');
