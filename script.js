@@ -200,24 +200,25 @@ contactForm.addEventListener('submit', async (e) => {
     submitBtn.disabled = true;
     
     try {
-        // Send form data to Formspree
+        // Send form data to Formspree using FormData
+        const formData = new FormData(contactForm);
+        
         const response = await fetch('https://formspree.io/f/xpqpadwg', {
             method: 'POST',
+            body: formData,
             headers: {
-                'Content-Type': 'application/json',
                 'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                message: message
-            })
+            }
         });
         
         if (response.ok) {
             showNotification('Message sent successfully! I will reply soon.', 'success');
             contactForm.reset();
         } else {
+            const data = await response.json();
+            if (data.errors) {
+                throw new Error(data.errors.map(e => e.message).join(', '));
+            }
             throw new Error('Failed to send message');
         }
     } catch (error) {
